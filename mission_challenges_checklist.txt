@@ -4,9 +4,6 @@ BOILER ROOM WEEK 4 - CHALLENGES + SECRETS CHECKLIST
 Repository:
 - https://github.com/Mattej-Petrovic/M4K-Pipeline
 
-Deployment:
-- https://m4k-pipeline-production.up.railway.app
-
 
 1) CORE CHALLENGE (MUST HAVE)
 -----------------------------

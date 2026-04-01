@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 3000;
 const APP_VERSION = process.env.APP_VERSION || "1.0.0";
 const REPO_URL = process.env.REPO_URL || "https://github.com/Mattej-Petrovic/M4K-Pipeline";
 const ACTIONS_URL = `${REPO_URL}/actions/workflows/pipeline.yml`;
-const DEPLOY_URL = process.env.DEPLOY_URL || "https://m4k-pipeline-production.up.railway.app";
 const CHECKLIST_FILE_NAME = "mission_challenges_checklist.txt";
 const CHECKLIST_PATH = path.join(__dirname, CHECKLIST_FILE_NAME);
 
@@ -179,7 +178,6 @@ app.get("/", (req, res) => {
   const baseUrl = `${req.protocol}://${host}`;
   const repoUrl = REPO_URL;
   const actionsUrl = ACTIONS_URL;
-  const deployUrl = DEPLOY_URL;
   const checklistUrl = `${repoUrl}/blob/main/${CHECKLIST_FILE_NAME}`;
   const checklistText = fs.existsSync(CHECKLIST_PATH)
     ? escapeHtml(fs.readFileSync(CHECKLIST_PATH, "utf8"))
@@ -199,7 +197,6 @@ app.get("/", (req, res) => {
   const quickLinks = [
     ["GitHub repository", repoUrl, "Source, commits and workflow history"],
     ["GitHub Actions pipeline", actionsUrl, "Build, test, scan and deploy"],
-    ["Railway production URL", deployUrl, "Live environment for the deployed service"],
     ["Challenge checklist", checklistUrl, "Original mission brief in the repository"]
   ];
   const endpoints = [
@@ -744,7 +741,6 @@ app.get("/", (req, res) => {
                 <p class="lead">A more intentional cockpit for the pipeline: live telemetry, deploy targets, runtime checks, progress tracking and handoff prep arranged like an operations board instead of a default dashboard.</p>
                 <div class="actions">
                   <a class="button primary" href="${escapeAttribute(actionsUrl)}" target="_blank" rel="noreferrer">Open pipeline</a>
-                  <a class="button secondary" href="${escapeAttribute(deployUrl)}" target="_blank" rel="noreferrer">Open production app</a>
                 </div>
                 <div class="stats">
                   <div class="stat"><span class="micro">Uptime</span><strong>${Math.floor(process.uptime())}s</strong></div>
@@ -763,7 +759,6 @@ app.get("/", (req, res) => {
                 <div class="signal-list">
                   <div><span class="label">Host</span><span class="value">${escapeHtml(host)}</span></div>
                   <div><span class="label">Base URL</span><span class="value">${escapeHtml(baseUrl)}</span></div>
-                  <div><span class="label">Deploy target</span><span class="value">${escapeHtml(deployUrl)}</span></div>
                   <div><span class="label">Repository</span><span class="value">${escapeHtml(repoUrl)}</span></div>
                 </div>
               </aside>
