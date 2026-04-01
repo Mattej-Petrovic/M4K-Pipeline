@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-pipeline
+  namespace: boiler-room
+spec:
+  selector:
+    app: first-pipeline
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30030
+    protocol: TCP
+  type: NodePort

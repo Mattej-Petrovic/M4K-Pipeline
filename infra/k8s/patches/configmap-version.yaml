@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: first-pipeline-config
+  namespace: boiler-room
+data:
+  APP_VERSION: "v5"
